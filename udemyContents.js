@@ -18,8 +18,8 @@ function getStats() {
   Span = document.createElement("span");
   Span.innerHTML = "Remaining: 00 00 | Done: 00 00";
   document.querySelector('div[class*="lead--lead"]').appendChild(Span);
-  document.getElementById("statsBtn").disabled = true;
-  document.querySelector('button[data-purpose="expand-toggle"]').click();
+  toClick = document.querySelector('button[class*="curriculum--show-more"]')
+  toClick ? toClick.click() : {} ;
   sections = document.querySelectorAll('button[class*="js-panel-toggler"]');
   durations = [];
   for (let el of sections) {
@@ -49,16 +49,5 @@ function getStats() {
     });
   }
 }
-setTimeout(() => {
-  document.querySelector(
-    'h2[data-purpose="curriculum-header"]'
-  ).innerHTML += `<button id="statsBtn" class="udlite-btn udlite-btn-medium udlite-btn-ghost udlite-heading-sm" type="button" style="
-    margin-top: 20px;
-    width: 100%;
-    border: 1px solid rgba(0,0,0,.85);
-"><span>Stats</span></button>`;
+getStats();
 
-  document
-    .getElementById("statsBtn")
-    .addEventListener("click", getStats, (once = true));
-}, 1000);
